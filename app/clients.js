@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
     'use strict';
 
     function ServerfulWorkshopClient() {
@@ -19,15 +19,19 @@
             postData = {
                 records: records
             };
-        $.post(this.ECSEndpoint, postData)
-            .success(function successCallback(data) {
-                console.log(data);
-                alert("Done.");
-            })
-            .fail(function failCallback(data) {
-                console.error(data);
-                alert("Something went wrong.");
-            });
+        $.ajax({
+            type: 'POST',
+            url: this.ECSEndpoint,
+            data: JSON.stringify(postData),
+            contentType: "application/json",
+            dataType: "json"
+        }).success(function successCallback(data) {
+            console.log(data);
+            alert("Done.");
+        }).fail(function failCallback(data) {
+            console.error(data);
+            alert("Something went wrong.");
+        });
     };
 
     function ServerlessWorkshopClient() {
@@ -95,21 +99,21 @@
     };
 
     function _generateRecords(count) {
-        var records = [];
-        for(var i = 0; i < count; i++) {
+        var records = [], i;
+        for (i = 0; i < count; i += 1) {
             records.push(_generateRecord());
         }
         return records;
     }
 
     function _generateRecord() {
-        var record = [];
+        var record = [], j;
         record.push(parseInt(generateRandomNumber(1, 100, 0)));
-        for(var j = 0; j < 28; j++) {
+        for (j = 0; j < 28; j += 1) {
             record.push(generateRandomNumber(-1.95, +1.95));
         }
         record.push(generateRandomNumber(1, 250, 2));
-        return record
+        return record;
     }
 
     function generateRandomNumber(min, max, decimals) {
@@ -123,4 +127,4 @@
     window.ServerfulWorkshopClient = ServerfulWorkshopClient;
     window.ServerlessWorkshopClient = ServerlessWorkshopClient;
 
-})();
+})(window.jQuery);
