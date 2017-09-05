@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fraud Detection Workshop - Client</title>
+        <link rel="shortcut icon" href="imgs/favicon.ico">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container text-center">
+
+            <h1>
+                <img id="logo" src="imgs/logo.svg" alt="Cloud Academy" title="Cloud Academy" />
+            </h1>
+
+            <h2>
+                Fraud Detection Workshop (Client)
+            </h2>
+
+            <p class="lead">
+                You can use this web page to generate transactions for <br/>
+                both the serverful and the serverless workshop.
+            </p>
+
+            <div class="row">
+                <div class="col-6">
+
+                    <h3>Serverful Workshop</h3>
+
+                    <form>
+
+                        <div class="form-group row justify-content-around">
+                            <input required type="text" class="form-control col-8" id="ecs-endpoint-serverful"placeholder="ECS Endpoint" />
+                        </div>
+                      
+                        <button class="btn-primary send-serverful" type="submit" data-count="1">Send 1 record</button>
+                        <button class="btn-danger send-serverful" type="submit" data-count="100" >Send 100 records</button>
+
+                    </form>
+
+                </div>
+                <div class="col-6">
+
+                    <h3>Serverless Workshop</h3>
+
+                    <form>
+
+                        <div class="form-group row justify-content-around">
+                            <input required type="text" class="form-control col-8" id="aws-region-serverless"placeholder="AWS Region" />
+                        </div>
+                        <div class="form-group row justify-content-around">
+                            <input required type="text" class="form-control col-8" id="cognito-pool-serverless" placeholder="Cognito Identity Pool ID" />
+                        </div>
+                        <div class="form-group row justify-content-around">
+                            <input required type="text" class="form-control col-8" id="stream-name-serverless" placeholder="Cognito Kinesis Stream Name" />
+                        </div>
+                      
+                        <button class="btn-primary send-serverless" type="submit" data-count="1">Send 1 record</button>
+                        <button class="btn-danger send-serverless" type="submit" data-count="100" >Send 100 records</button>
+
+                    </form>
+
+                </div>
+              </div>
+
+            
+
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="libs/aws-sdk-2.71.0.min.js"></script>
+        <script src="clients.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
