@@ -1,49 +1,51 @@
-(function() {
+(function ($) {
+    'use strict';
 
-    $(function() {
+    $(function () {
 
         // fetch DOM nodes
-        var $sendRecordServerful = $('.send-serverful'),
-            $sendRecordServerless = $('.send-serverless');
+        var $formServerful = $('#form-serverful'),
+            $formServerless = $('#form-serverless');
 
-        // initialize workshop clients
-        var serverfulWorkshopClient = new ServerfulWorkshopClient(),
-            serverlessWorkshopClient = new ServerlessWorkshopClient();
+        $formServerful.data('client', new ServerfulWorkshopClient());
+        $formServerless.data('client', new ServerlessWorkshopClient());
 
-        window.serverfulWorkshopClient = serverfulWorkshopClient;
-        window.serverlessWorkshopClient = serverlessWorkshopClient;
+        $formServerful.data('getParamsFunc', readServerfulParams);
+        $formServerless.data('getParamsFunc', readServerlessParams);
 
         // register DOM events
-        $('form').on('click', '.send-serverful', function() {
-            var params = readServerfulParams();
-            serverfulWorkshopClient.config(params);
-            var count = $(this).data('count') || 1;
-            serverfulWorkshopClient.send(count);
-            return false;
+        $("form").on('click', 'button', function buttonClick() {
+            // keep track of which button has been clicked
+            $("button", $(this).parents("form")).removeAttr("clicked");
+            $(this).attr("clicked", "true");
         });
 
-        $('form').on('click', '.send-serverless', function() {
-            var params = readServerlessParams();
-            serverlessWorkshopClient.config(params);
-            var count = $(this).data('count') || 1;
-            serverlessWorkshopClient.send(count);
-            return false;
+        $("form").on('submit', function formSubmit() {
+            var $this = $(this),
+                $btn = $this.find('[clicked="true"]'),
+                count = $btn.data('count') || 1,
+                client = $this.data('client'),
+                params = $this.data('getParamsFunc')();
+
+            client.config(params);
+            client.send(count);
+            return false;  // avoid browser submit
         });
 
     });
 
     function readServerfulParams() {
         return {
-            'ECSEndpoint': $('#ecs-endpoint-serverful').val(),
-        }
+            ECSEndpoint: $('#ecs-endpoint-serverful').val()
+        };
     }
 
     function readServerlessParams() {
         return {
-            'AWSRegion': $('#aws-region-serverless').val(),
-            'CognitoIdentityPoolID': $('#cognito-pool-serverless').val(),
-            'KinesisStreamName': $('#stream-name-serverless').val(),
-        }
+            AWSRegion: $('#aws-region-serverless').val(),
+            CognitoIdentityPoolID: $('#cognito-pool-serverless').val(),
+            KinesisStreamName: $('#stream-name-serverless').val()
+        };
     }
 
-})();
+})(window.jQuery);
