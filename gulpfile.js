@@ -29,7 +29,7 @@ gulp.task('compress', function (cb) {
 });
 
 
-gulp.task('minify', function () {
+gulp.task('minify', ['compress'], function () {
     "use strict";
     const manifest = gulp.src("tmp/rev-manifest.json");
     return gulp
@@ -46,19 +46,10 @@ gulp.task('copy', function () {
     "use strict";
     return gulp
         .src([
-            'app/*.css',
+            //'app/*.css',
             'app/*.json'
         ])
         .pipe(gulp.dest('dist'));
-});
-
-gulp.task('copy-libs', function () {
-    "use strict";
-    return gulp
-        .src([
-            'app/libs/**'
-        ])
-        .pipe(gulp.dest('dist/libs'));
 });
 
 gulp.task('copy-imgs', function () {
@@ -78,7 +69,7 @@ gulp.task('clean', ['do-build'], function () {
 });
 
 gulp.task('do-build', [
-    'compress', 'minify', 'copy', 'copy-libs', 'copy-imgs'
+    'compress', 'minify', 'copy', 'copy-imgs'
 ]);
 
 gulp.task('build', ['clean']);
@@ -95,7 +86,7 @@ gulp.task('serve-dev', function () {
 });
 
 
-gulp.task('serve-dist', function () {
+gulp.task('serve-dist', ['build'], function () {
     "use strict";
     browserSync.init({
         server: {
