@@ -1,0 +1,13 @@
+{
+    "name": "Fraud Detection Workshop",
+    "short_name": "Fraud Detection Workshop",
+    "icons": [
+        {
+            "src": "\/imgs\//favicon.ico",
+            "sizes": "192x192",
+            "type": "image\/icon"
+        }
+    ],
+    "theme_color": "#1874BD",
+    "display": "standalone"
+}
