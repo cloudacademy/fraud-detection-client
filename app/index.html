@@ -22,16 +22,16 @@
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1874BD" />
         <link rel="canonical" href="https://workshop.cloudacademy.com" />
-        <link rel="shortcut icon" href="imgs/favicon.ico">
+        <link rel="shortcut icon" href="imgs/favicon.ico" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles.css" inline />
     </head>
     <body>
         <div class="container text-center">
 
             <h1>
                 <a href="https://cloudacademy.com" target="_blank">
-                    <img id="logo" src="imgs/logo.svg" alt="Cloud Academy" title="Cloud Academy" />
+                    <img id="logo" src="imgs/logo.svg" alt="Cloud Academy" title="Cloud Academy" inline />
                 </a>
             </h1>
 
@@ -89,8 +89,10 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="libs/aws-sdk-2.71.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.110.0/aws-sdk.min.js"></script>
+        <!-- build:js -->
         <script src="clients.js"></script>
         <script src="app.js"></script>
+        <!-- endbuild -->
     </body>
 </html>
