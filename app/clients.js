@@ -17,13 +17,14 @@
     ServerfulWorkshopClient.prototype.send = function serverfulSend(count) {
         var records = _generateRecords(count),
             postData = {
-                records: records
+                features: records
             };
         $.ajax({
             type: 'POST',
             url: this.ECSEndpoint,
             data: JSON.stringify(postData),
             contentType: "application/json",
+            crossDomain: true,
             dataType: "json"
         }).success(function successCallback(data) {
             console.log(data);
