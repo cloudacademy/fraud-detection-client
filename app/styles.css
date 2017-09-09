@@ -3,16 +3,19 @@ body {
     font-family: Lato;
 }
 
-
 h2, .lead {
     margin: 30px auto;
 }
 
 #logo {
     max-width: 300px;
+    display: inline-block;
+    vertical-align: middle;
 }
 #footer-logo {
-    max-width: 25px;
+    width: 25px;
+    height: 27px;
+    vertical-align: middle;
 }
 
 footer {
