@@ -1,11 +1,34 @@
 body {
-    padding: 40px;
+    padding: 25px 0 0;
+    font-family: Lato;
 }
 
+
 h2, .lead {
-    margin: 40px auto;
+    margin: 30px auto;
 }
 
 #logo {
-    max-width: 400px;
+    max-width: 300px;
+}
+#footer-logo {
+    max-width: 25px;
+}
+
+footer {
+    border-top: 1px solid #eaeaea;
+    margin-top: 30px;
+    padding: 10px 0;
+    font-size: .9em;
+    color: #4d4d4d;
+    font-weight: lighter;
+}
+
+footer a {
+    display: inline-block;
+    color: #4d4d4d;
+}
+
+footer a:hover, footer a:active {
+    color: #666;
 }

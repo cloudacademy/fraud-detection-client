@@ -24,6 +24,7 @@
         <link rel="canonical" href="https://workshop.cloudacademy.com" />
         <link rel="shortcut icon" href="imgs/favicon.ico" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" />
         <link rel="stylesheet" href="styles.css" inline />
     </head>
     <body>
@@ -45,9 +46,9 @@
             </p>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
 
-                    <h3>Serverful Workshop</h3>
+                    <h3 class="mb-4">Serverful Workshop</h3>
 
                     <form id="form-serverful">
 
@@ -55,16 +56,19 @@
                             <input required type="text" class="form-control col-8" id="ecs-endpoint-serverful"placeholder="ECS Endpoint" />
                         </div>
                       
-                        <button class="btn-primary" type="submit" data-count="1">Send 1 record</button>
-                        <button class="btn-danger" type="submit" data-count="100" >Send 100 records</button>
+                        <div class="mt-4">
+                            <button class="btn btn-success" type="submit" data-count="1">Send 1</button>
+                            <button class="btn btn-warning" type="submit" data-count="100" >Send 100</button>
+                            <button class="btn btn-danger" type="submit" data-count="500" >Send 500</button>
+                        </div>
 
                     </form>
 
                 </div>
 
-                <div class="col-6">
+                <div class="col-12 col-md-6 mt-sm-5 mt-md-0">
 
-                    <h3>Serverless Workshop</h3>
+                    <h3 class="mb-4">Serverless Workshop</h3>
 
                     <form id="form-serverless">
 
@@ -80,16 +84,43 @@
                             <input required type="text" class="form-control col-8" id="stream-name-serverless" placeholder="Cognito Kinesis Stream Name" />
                         </div>
                     
-                        <button class="btn-primary" type="submit" data-count="1">Send 1 record</button>
-                        <button class="btn-danger" type="submit" data-count="100" >Send 100 records</button>
+                        <div class="mt-4">
+                            <button class="btn btn-success" type="submit" data-count="1">Send 1</button>
+                            <button class="btn btn-warning" type="submit" data-count="100" >Send 100</button>
+                            <button class="btn btn-danger" type="submit" data-count="500" >Send 500</button>
+                        </div>
 
                     </form>
 
                 </div>
             </div>
         </div>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 text-center text-md-left">
+                        <a class="mr-2" title="Cloud Academy" href="https://cloudacademy.com" target="_blank">
+                            <img id="footer-logo" src="imgs/logo-small.svg" title="Cloud Academy" alt="Cloud Academy" inline />
+                        </a>
+                        <a href="https://cloudacademy.com/terms/" title="Terms of Use" target="_blank">
+                            Terms of Use
+                        </a>
+                        &nbsp;-&nbsp;
+                        <a href="https://cloudacademy.com/privacy/" title="Privacy Policy" target="_blank">
+                            Privacy Policy
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 text-center text-md-right">
+                        Copyright © 2017 Cloud Academy Inc.
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.110.0/aws-sdk.min.js"></script>
+        <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
         <!-- build:js -->
         <script src="clients.js"></script>
         <script src="app.js"></script>
