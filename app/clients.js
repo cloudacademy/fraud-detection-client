@@ -66,6 +66,8 @@
         AWS.config.credentials.get(function getCognitoCredentials(err) {
             if (err) {
                 console.error(err, err.stack);
+                alert(err);
+                cb && cb();
             } else {
                 client.putRecords(records, cb);
             }
@@ -91,10 +93,11 @@
         kinesis.putRecords(params, function putRecordsCallback(err, data) {
             if (err) {
                 console.error(err, err.stack);
+                alert(err);
             } else {
                 console.log(data);
-                cb && cb();
             }
+            cb && cb();
         });
     };
 
