@@ -111,13 +111,14 @@
 
     function _generateRecord() {
         var record = [], j, range;
-        var ranges = (Math.random() * 100 < 3 ? fraudsRanges : notFraudsRanges);
+        var isFraud = (Math.random() === 0);  // only 1%
+        var ranges = (isFraud ? fraudsRanges : notFraudsRanges);
         record.push(parseInt(generateRandomNumber(1, 100, 0)));
         for (j = 1; j <= 28; j += 1) {
             range = ranges['V'+j];
             record.push(generateRandomNumber(range[0], range[1]));
         }
-        record.push(generateRandomNumber(1, 250, 2));
+        record.push(generateRandomNumber(1, (isFraud ? 500 : 10), 2));
         return record;
     }
 
