@@ -27,8 +27,13 @@
                 client = $this.data('client'),
                 params = $this.data('getParamsFunc')();
 
+            NProgress.start();
+            $this.find('button').prop('disabled', true);
             client.config(params);
-            client.send(count);
+            client.send(count, function() {
+                NProgress.done();
+                $this.find('button').prop('disabled', false);
+            });
             return false;  // avoid browser submit
         });
 
