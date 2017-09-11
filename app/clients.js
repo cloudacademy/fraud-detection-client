@@ -114,7 +114,7 @@
 
     function _generateRecord() {
         var record = [], j, range;
-        var isFraud = (Math.random() === 0);  // only 1%
+        var isFraud = (Math.random() <= 0.01);  // only 1%
         var ranges = (isFraud ? fraudsRanges : notFraudsRanges);
         record.push(parseInt(generateRandomNumber(1, 100, 0)));
         for (j = 1; j <= 28; j += 1) {
